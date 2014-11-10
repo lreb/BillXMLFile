@@ -204,7 +204,19 @@ foreach ($xml->xpath('//t:TimbreFiscalDigital') as $tfd) {
 		<div class="col-md-8">
 
 			<div class="row">
-				<div class="col-md-3">imagen</div>
+				<div class="col-md-3">
+            Factura Electrónica
+            <table >
+              <tr>
+                <td>Tipo de comprobante</td>
+                <td><?php echo $cTipoDeComprobante; ?></td>
+              </tr>
+              <tr>
+                <td>Folio</td>
+                <td><?php echo $cFolio; ?></td>
+              </tr>
+            </table>
+        </div>
 				<div class="col-md-6">
 					
 					<?php echo $eNombre; ?>
@@ -219,8 +231,6 @@ foreach ($xml->xpath('//t:TimbreFiscalDigital') as $tfd) {
 				<div class="row">
 					<div class="col-md-3">
 						
-						<?php echo $cFolio; ?>
-						<br>
 						<?php echo $cePais; ?>, <?php echo $ceEstado; ?> - <?php echo $cFecha; ?>
 
 					</div>
@@ -230,18 +240,33 @@ foreach ($xml->xpath('//t:TimbreFiscalDigital') as $tfd) {
 			<br>
 			<div class="row">
 				<div class="col-md-7">
-					<?php echo $rNombre; ?> 
+          Emisor
+          <table>
+            <tr>
+              <td>Nombre<td><td><?php echo $rNombre; ?> </td>
+            </tr>
+            <tr>
+              <td>Direccion<td><td><?php echo $rPais; ?>, <?php echo $rEstado; ?>, <?php echo $rMunicipio; ?></td>
+            </tr>
+            <tr>
+              <td><td><td><?php echo $rColonia; ?>, <?php echo $rCalle; ?>, <?php echo $rNoExterior; ?>, <?php echo $rCodigoPostal; ?></td>
+            </tr>
+            <tr>
+              <td>RFC<td><td><?php echo $rRfc; ?></td>
+            </tr>
+          </table>
+					
 					<br>
-					<?php echo $rPais; ?>, <?php echo $rEstado; ?>, <?php echo $rMunicipio; ?>
+					
 					<br>
-					<?php echo $rColonia; ?>, <?php echo $rCalle; ?>, <?php echo $rNoExterior; ?>, <?php echo $rCodigoPostal; ?>
+					
 					<br>
-					<?php echo $rRfc; ?>
+					
 				</div>
 				<div class="col-md-5">
 					<?php echo $cFormaDePago; ?>
 					<br>
-					<?php echo $cNoCertificado; ?>
+					
 				</div>
 			</div>
 			<br>
@@ -317,8 +342,27 @@ foreach ($xml->xpath('//t:TimbreFiscalDigital') as $tfd) {
 
 			<!--sellos-->
 			<div class="row">
-				<div class="col-md-12">
-					/S+hvNjdUwz4dnetrus4knJn7ntK/mFxcAY1HbWSoMLwU3PwegK96iocKqCdj1OnB95Sus278cpaGXw3E=
+        <div class="col-md-3">
+          <img src="img/qr.png" width="200px">
+        </div>
+				<div class="col-md-9">
+					<table>
+            <tr>
+              <td>Sello del SAT</td>
+              <td>
+                <?php echo substr($cSello, 0, 50); ?>
+                <?php echo substr($cSello, 49, 50); ?>
+                <?php echo substr($cSello, 98, 50); ?>
+                <?php echo substr($cSello, 147, 50); ?>
+              </td>
+            </tr>   
+            <tr>
+              <td>Numero de serie del certificado del SAT</td>
+              <td>
+                <?php echo $cNoCertificado; ?>
+              </td>
+            </tr>    
+          </table>
 				</div>
 			</div>
 
